@@ -79,16 +79,6 @@ namespace XenAdminTests.HealthCheckTests
             con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize + 1);
 
-            //3. Send credential twice and check result
-            pipeClient = new NamedPipeClientStream(".", HealthCheckSettings.HEALTH_CHECK_PIPE, PipeDirection.Out);
-            pipeClient.Connect();
-            credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName, UserName, Password }));
-            pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
-            pipeClient.Close();
-            System.Threading.Thread.Sleep(5000);
-            con = ServerListHelper.instance.GetServerList();
-            Assert.IsTrue(con.Count == conSize + 1);
-
             //4. remove credential and check result
             pipeClient = new NamedPipeClientStream(".", HealthCheckSettings.HEALTH_CHECK_PIPE, PipeDirection.Out);
             pipeClient.Connect();
