@@ -58,34 +58,43 @@ namespace XenAdminTests.HealthCheckTests
             string HostName = "Host1";
             string UserName = "User1";
             string Password = "password1";
-            int conSize = ServerListHelper.instance.GetServerList().Count;
-            //1. Empty credential 
+            
+            //1. First make sure HostName is not on the list
             NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", HealthCheckSettings.HEALTH_CHECK_PIPE, PipeDirection.Out);
             pipeClient.Connect();
-            string credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName, null, null }));
+            string credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
-            System.Threading.Thread.Sleep(5000);
-            List<ServerInfo> con = ServerListHelper.instance.GetServerList();
-            Assert.IsTrue(con.Count == conSize);
-
+            System.Threading.Thread.Sleep(1000);
+            int conSize = ServerListHelper.instance.GetServerList().Count;
+            
             //2. Send credential and check result
             pipeClient = new NamedPipeClientStream(".", HealthCheckSettings.HEALTH_CHECK_PIPE, PipeDirection.Out);
             pipeClient.Connect();
             credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName, UserName, Password }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
-            System.Threading.Thread.Sleep(5000);
-            con = ServerListHelper.instance.GetServerList();
+            System.Threading.Thread.Sleep(1000);
+            List<ServerInfo> con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize + 1);
 
+            //3. Send credential twice and check result
+            pipeClient = new NamedPipeClientStream(".", HealthCheckSettings.HEALTH_CHECK_PIPE, PipeDirection.Out);
+            pipeClient.Connect();
+            credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName, UserName, Password }));
+            pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
+            pipeClient.Close();
+            System.Threading.Thread.Sleep(1000);
+            con = ServerListHelper.instance.GetServerList();
+            Assert.IsTrue(con.Count == conSize + 1);
+            
             //4. remove credential and check result
             pipeClient = new NamedPipeClientStream(".", HealthCheckSettings.HEALTH_CHECK_PIPE, PipeDirection.Out);
             pipeClient.Connect();
             credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(1000);
             con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize);
 
@@ -98,7 +107,7 @@ namespace XenAdminTests.HealthCheckTests
             credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName, UserName, Password }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(1000);
             con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize + 1);
 
@@ -108,12 +117,12 @@ namespace XenAdminTests.HealthCheckTests
             credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(1000);
             con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize);
 
 
-            //7. semd 2 credential
+            //7. send 2 credential
             pipeClient = new NamedPipeClientStream(".", HealthCheckSettings.HEALTH_CHECK_PIPE, PipeDirection.Out);
             pipeClient.Connect();
             HostName = "host3";
@@ -137,7 +146,7 @@ namespace XenAdminTests.HealthCheckTests
             credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(1000);
             con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize);
 
