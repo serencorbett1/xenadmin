@@ -65,6 +65,7 @@ namespace XenAdminTests.HealthCheckTests
             string credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName, null, null }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
+            System.Threading.Thread.Sleep(5000);
             List<ServerInfo> con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize);
 
@@ -74,7 +75,7 @@ namespace XenAdminTests.HealthCheckTests
             credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName, UserName, Password }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(5000);
             con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize + 1);
 
@@ -84,7 +85,7 @@ namespace XenAdminTests.HealthCheckTests
             credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName, UserName, Password }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(5000);
             con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize + 1);
 
@@ -94,7 +95,7 @@ namespace XenAdminTests.HealthCheckTests
             credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(5000);
             con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize);
 
@@ -107,7 +108,7 @@ namespace XenAdminTests.HealthCheckTests
             credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName, UserName, Password }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(5000);
             con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize + 1);
 
@@ -117,7 +118,7 @@ namespace XenAdminTests.HealthCheckTests
             credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(5000);
             con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize);
 
@@ -146,7 +147,7 @@ namespace XenAdminTests.HealthCheckTests
             credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(5000);
             con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize);
 
