@@ -58,24 +58,21 @@ namespace XenAdminTests.HealthCheckTests
             string HostName = "Host1";
             string UserName = "User1";
             string Password = "password1";
-            
-            //1. First make sure HostName is not on the list
-            NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", HealthCheckSettings.HEALTH_CHECK_PIPE, PipeDirection.Out);
-            pipeClient.Connect();
-            string credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName }));
-            pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
-            pipeClient.Close();
-            System.Threading.Thread.Sleep(1000);
-            int conSize = ServerListHelper.instance.GetServerList().Count;
+                        
+            //1. Empty list
+            ServerListHelper.instance.ClearServerList();
+            int conSize = 0;
+            List<ServerInfo> con = ServerListHelper.instance.GetServerList();
+            Assert.IsTrue(con.Count == conSize);
             
             //2. Send credential and check result
-            pipeClient = new NamedPipeClientStream(".", HealthCheckSettings.HEALTH_CHECK_PIPE, PipeDirection.Out);
+            NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", HealthCheckSettings.HEALTH_CHECK_PIPE, PipeDirection.Out);
             pipeClient.Connect();
-            credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName, UserName, Password }));
+            string credential = EncryptionUtils.ProtectForLocalMachine(String.Join(SEPARATOR.ToString(), new[] { HostName, UserName, Password }));
             pipeClient.Write(Encoding.UTF8.GetBytes(credential), 0, credential.Length);
             pipeClient.Close();
             System.Threading.Thread.Sleep(1000);
-            List<ServerInfo> con = ServerListHelper.instance.GetServerList();
+            con = ServerListHelper.instance.GetServerList();
             Assert.IsTrue(con.Count == conSize + 1);
 
             //3. Send credential twice and check result
