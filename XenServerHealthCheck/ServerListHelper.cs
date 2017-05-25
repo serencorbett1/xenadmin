@@ -146,6 +146,15 @@ namespace XenServerHealthCheck
             Properties.Settings.Default.ServerList = encList.ToArray();
             Properties.Settings.Default.Save();
         }
+        
+        public void ClearServerList()
+        {
+            lock (serverListLock)
+            {
+                serverList.Clear();
+                updateServerList();
+            }
+        }
 
         public bool UpdateServerInfo(ServerInfo server)
         {
