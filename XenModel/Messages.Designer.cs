@@ -10953,15 +10953,6 @@ namespace XenAdmin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The selected device position is currently in use..
-        /// </summary>
-        public static string DEVICE_POSITION_IN_USE {
-            get {
-                return ResourceManager.GetString("DEVICE_POSITION_IN_USE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You will have to restart the VM for changes in device position to take effect..
         /// </summary>
         public static string DEVICE_POSITION_RESTART_REQUIRED {
@@ -23466,6 +23457,24 @@ namespace XenAdmin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This server has different updates from the master.
+        /// </summary>
+        public static string NEWPOOL_DIFFERENT_HOMOGENEOUS_UPDATES_FROM_MASTER {
+            get {
+                return ResourceManager.GetString("NEWPOOL_DIFFERENT_HOMOGENEOUS_UPDATES_FROM_MASTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This server has different updates from servers already in the pool.
+        /// </summary>
+        public static string NEWPOOL_DIFFERENT_HOMOGENEOUS_UPDATES_FROM_POOL {
+            get {
+                return ResourceManager.GetString("NEWPOOL_DIFFERENT_HOMOGENEOUS_UPDATES_FROM_POOL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This server&apos;s network backend is different from the master&apos;s.
         /// </summary>
         public static string NEWPOOL_DIFFERENT_NETWORK_BACKENDS {
@@ -26815,7 +26824,7 @@ namespace XenAdmin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [XenServer] Updates and Supplemental Packs (*.{0}, *.iso)|*.{0};*.iso.
+        ///   Looks up a localized string similar to [XenServer] Updates and Supplemental Packs (*.{0}, *.iso,*.zip)|*.{0};*.iso;*.zip.
         /// </summary>
         public static string PATCHINGWIZARD_SELECTPATCHPAGE_UPDATESEXT {
             get {
@@ -33592,6 +33601,15 @@ namespace XenAdmin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extract {0}.
+        /// </summary>
+        public static string UPDATES_WIZARD_EXTRACT_ACTION_TITLE {
+            get {
+                return ResourceManager.GetString("UPDATES_WIZARD_EXTRACT_ACTION_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to find the update file &apos;{0}&apos;.
         ///
         ///Check your settings and try again..
@@ -33806,6 +33824,15 @@ namespace XenAdmin {
         public static string UPDATES_WIZARD_NOTVALID_EXTENSION {
             get {
                 return ResourceManager.GetString("UPDATES_WIZARD_NOTVALID_EXTENSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No valid update file found in {0}.
+        /// </summary>
+        public static string UPDATES_WIZARD_NOTVALID_ZIPFILE {
+            get {
+                return ResourceManager.GetString("UPDATES_WIZARD_NOTVALID_ZIPFILE", resourceCulture);
             }
         }
         
@@ -34995,6 +35022,24 @@ namespace XenAdmin {
         public static string VBD_EDIT_CURRENTLY_ATTACHED {
             get {
                 return ResourceManager.GetString("VBD_EDIT_CURRENTLY_ATTACHED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} - currently in use.
+        /// </summary>
+        public static string VBD_EDIT_CURRENTLY_IN_USE {
+            get {
+                return ResourceManager.GetString("VBD_EDIT_CURRENTLY_IN_USE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} - currently in use by &apos;{1}&apos;.
+        /// </summary>
+        public static string VBD_EDIT_CURRENTLY_IN_USE_BY {
+            get {
+                return ResourceManager.GetString("VBD_EDIT_CURRENTLY_IN_USE_BY", resourceCulture);
             }
         }
         

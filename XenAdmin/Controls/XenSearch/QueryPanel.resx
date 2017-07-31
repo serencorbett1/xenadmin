@@ -117,133 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ACTIVATION_FORM_URL" xml:space="preserve">
-    <value>https://{0}/index.html?transactionID={1}</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="ACTIVATION_SERVER" xml:space="preserve">
-    <value>activate.vmd.citrix.com</value>
+  <data name="$this.TrayLargeIcon" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="ACTIVATION_URL" xml:space="preserve">
-    <value>https://{0}/reactivation_server.php</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>QueryPanel</value>
   </data>
-  <data name="CHECK_FOR_UPDATES_URL" xml:space="preserve">
-    <value>http://updates.xensource.com/[XenServer]/{0}/XenCenter</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>XenAdmin.Controls.CustomGridView.GridView, XenCenterMain, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="COMMUNITY_URL" xml:space="preserve">
-    <value>http://xenserver.org/</value>
+  <data name="DISKS_OVERVIEW_COL_WIDTH" xml:space="preserve">
+    <value>120</value>
   </data>
-  <data name="HEALTH_CHECK_PRIVACY_STATEMENT_URL" xml:space="preserve">
-    <value>https://cis.citrix.com/legal/</value>
-  </data>
-  <data name="HOMEPAGE" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver</value>
-  </data>
-  <data name="HOMEPAGE_FILENAME" xml:space="preserve">
-    <value>HomePage.mht</value>
-  </data>
-  <data name="HTTP_LICENSES" xml:space="preserve">
-    <value>www.citrix.com/xenserverenterprise</value>
-  </data>
-  <data name="ISL_DEPRECATION_URL" xml:space="preserve">
-    <value>http://support.citrix.com/article/CTX141433</value>
-  </data>
-  <data name="LICENSE_EXPIRY_WEBPAGE" xml:space="preserve">
-    <value>http://www.citrix.com/xenserverenterprise</value>
-  </data>
-  <data name="LICENSE_SERVER_DOWNLOAD_LINK" xml:space="preserve">
-    <value>http://www.citrix.com/downloads/licensing/license-server</value>
-  </data>
-  <data name="LOCALE" xml:space="preserve">
-    <value>en-US</value>
-  </data>
-  <data name="LOG_FILENAME" xml:space="preserve">
-    <value>[XenCenter].log</value>
-  </data>
-  <data name="MAINWINDOW_HELP_PARAMS" xml:space="preserve">
-    <value>-mapid {0} {1}</value>
-  </data>
-  <data name="MAINWINDOW_HELP_PATH" xml:space="preserve">
-    <value>Help\XenCenter.chm</value>
-  </data>
-  <data name="MAINWINDOW_HOME_PATH" xml:space="preserve">
-    <value>Home.htm</value>
-  </data>
-  <data name="OUT_OF_DATE_WEBSITE" xml:space="preserve">
-    <value>http://www.citrix.com/xenserverenterprise</value>
-  </data>
-  <data name="PARTNEROFFERS_URL" xml:space="preserve">
-    <value>http://www.citrix.com/buy/partnerlocator.html</value>
-  </data>
-  <data name="PLUGINS_URL" xml:space="preserve">
-    <value>https://wiki.xenserver.org/XenCenter_Plugins</value>
-  </data>
-  <data name="PRIVACY" xml:space="preserve">
-    <value>http://citrix.com/English/aboutCitrix/legal/privacyStatement.asp?ntref=hp_nav_US</value>
-  </data>
-  <data name="XEN_SEARCH" xml:space="preserve">
-    <value>xensearch</value>
-  </data>
-  <data name="SUPPORT_URL" xml:space="preserve">
-    <value>http://support.citrix.com/</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_ALERTS" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features/alerts</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_CPM" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features/storagemigration</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_CPUMASKING" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features/cpus</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_DMC" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features/dmc</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_DR" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features/dr</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_ENHANCEDSR" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features/storage</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_GENERAL" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_GPU" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features/gpu</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_HA" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features/ha</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_PERFORMANCE" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features/performance</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_RBAC" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features/rbac</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_VMSS" xml:space="preserve">
-    <value />
-  </data>
-  <data name="UPSELL_LEARNMOREURL_VM_APPLIANCES" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features/vapps</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_WLB" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features/wlb</value>
-  </data>
-  <data name="UPSELL_SA" xml:space="preserve">
-    <value>http://store.citrix.com/XSInProduct</value>
-  </data>
-  <data name="XENDESKTOP_URL" xml:space="preserve">
-    <value>http://www.citrix.com/TryXenDesktop</value>
-  </data>
-  <data name="XEN_UPDATE" xml:space="preserve">
-    <value>xsupdate</value>
-  </data>
-  <data name="XENSERVER_UPDATE_URL" xml:space="preserve">
-    <value>https://updates.xensource.com/XenServer/updates.xml</value>
-  </data>
-  <data name="UPSELL_LEARNMOREURL_AD" xml:space="preserve">
-    <value>http://www.citrix.com/xenserver/le/features/ad</value>
-  </data>
-  <data name="ISO_UPDATE" xml:space="preserve">
-    <value>iso</value>
+  <data name="NETWORK_OVERVIEW_COL_WIDTH" xml:space="preserve">
+    <value>120</value>
   </data>
 </root>
