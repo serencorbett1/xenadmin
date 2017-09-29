@@ -30,6 +30,7 @@
  */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -38,7 +39,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
 using XenAdmin.Actions;
 using XenAdmin.Alerts;
 using XenAdmin.Controls;
@@ -69,7 +69,6 @@ namespace XenAdmin.TabPages
             InitializeProgressControls();
             tableLayoutPanel1.Visible = false;
             UpdateButtonEnablement();
-            dataGridViewUpdates.Sort(ColumnDate, ListSortDirection.Descending);
             informationLabel.Click += informationLabel_Click;
             Updates.RegisterCollectionChanged(UpdatesCollectionChanged);
             Updates.RestoreDismissedUpdatesStarted += Updates_RestoreDismissedUpdatesStarted;
@@ -285,6 +284,10 @@ namespace XenAdmin.TabPages
                     if (dataGridViewUpdates.SortOrder == SortOrder.Descending)
                         updates.Reverse();
                 }
+                else
+                {
+                    updates.Sort(new NewVersionPriorityAlertComparer());
+                }
 
                 var rowList = new List<DataGridViewRow>();
 
@@ -443,11 +446,20 @@ namespace XenAdmin.TabPages
                 items.Add(dismiss);
             }
 
-            if (patchAlert != null && patchAlert.CanApply && !string.IsNullOrEmpty(patchAlert.Patch.PatchUrl))
+            if (patchAlert != null && patchAlert.CanApply && !string.IsNullOrEmpty(patchAlert.Patch.PatchUrl) && patchAlert.RequiredXenCenterVersion == null)
             {
                 var download = new ToolStripMenuItem(Messages.UPDATES_DOWNLOAD_AND_INSTALL);
                 download.Click += ToolStripMenuItemDownload_Click;
                 items.Add(download);
+            }
+
+            var updateAlert = alert as XenServerUpdateAlert;
+
+            if (updateAlert != null && updateAlert.RequiredXenCenterVersion != null)
+            {
+                var downloadNewXenCenter = new ToolStripMenuItem(Messages.UPDATES_DOWNLOAD_REQUIRED_XENCENTER);
+                downloadNewXenCenter.Click += ToolStripMenuItemDownloadNewXenCenter_Click;
+                items.Add(downloadNewXenCenter);
             }
 
             if (!string.IsNullOrEmpty(alert.WebPageLabel))
@@ -706,6 +718,24 @@ namespace XenAdmin.TabPages
                     }
                  }
             });
+        }
+
+        private void ToolStripMenuItemDownloadNewXenCenter_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow clickedRow = FindAlertRow(sender as ToolStripMenuItem);
+            if (clickedRow == null)
+                return;
+
+            XenServerUpdateAlert updateAlert = (XenServerUpdateAlert)clickedRow.Tag;
+
+            if (updateAlert == null || updateAlert.RequiredXenCenterVersion == null)
+                return;
+
+            string xenCenterUrl = updateAlert.RequiredXenCenterVersion.Url;
+            if (string.IsNullOrEmpty(xenCenterUrl))
+                return;
+
+            Program.Invoke(Program.MainWindow, () => Program.OpenURL(xenCenterUrl));
         }
 
         private void ToolStripMenuItemCopy_Click(object sender, EventArgs e)
@@ -978,5 +1008,7 @@ namespace XenAdmin.TabPages
         {
             labelProgress.MaximumSize = new Size(tableLayoutPanel3.Width - 60, tableLayoutPanel3.Size.Height);
         }
+
+
     }
 }
